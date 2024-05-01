@@ -4,6 +4,7 @@ import hello.core.AppConfig;
 import hello.core.member.MemberService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -44,7 +45,7 @@ public class SingletonTest {
     @DisplayName("스프링 컨테이너와 싱글톤")
     void springContainer() {
 //        AppConfig appConfig = new AppConfig();
-        AnnotationConfigApplicationContext ac = new AnnotationConfigApplicationContext(AppConfig.class);
+        ApplicationContext ac = new AnnotationConfigApplicationContext(AppConfig.class);
         // 1. 조회: 호출할 때 마다 객체를 생성
         MemberService memberService1 = ac.getBean("memberService", MemberService.class);
 
