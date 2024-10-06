@@ -15,15 +15,25 @@ public class JpaMain {
         tx.begin();
 
         try {
-            Member member = em.find(Member.class, 3L);
-            member.setName("AAAA");
+            Member memberA = new Member();
+            memberA.setName("A");
+            Member memberB = new Member();
+            memberB.setName("B");
+            Member memberC = new Member();
+            memberC.setName("C");
 
-            em.clear();
+            System.out.println("=====================");
 
-            Member member1 = em.find(Member.class, 3L);
-            System.out.println(member == member1);
+            em.persist(memberA);
+            em.persist(memberB);
+            em.persist(memberC);
 
-            System.out.println("===================");
+            System.out.println("memberA.getId() = " + memberA.getId());
+            System.out.println("memberB.getId() = " + memberB.getId());
+            System.out.println("memberC.getId() = " + memberC.getId());
+
+            System.out.println("=========================");
+
             tx.commit();
         } catch (Exception e) {
             tx.rollback();
